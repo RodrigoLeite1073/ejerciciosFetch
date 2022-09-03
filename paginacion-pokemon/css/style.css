@@ -1,0 +1,28 @@
+body {
+  background-color: #dbf;
+  text-align: center;
+}
+h1,
+h2 {
+  font-size: 4rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+h2 {
+  font-size: 2rem;
+}
+
+a {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+figure {
+  width: 30vh;
+}
+
+.grid-fluid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  text-align: center;
+}
