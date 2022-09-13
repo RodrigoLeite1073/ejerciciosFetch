@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscador de Shows en TVMaze</title>
+    <link rel="stylesheet" href="style/reset.css" />
+    <link rel="stylesheet" href="style/index.css" />
+  </head>
+  <body>
+    <h1>Buscador de Shows en TVMaze</h1>
+    <input type="search" id="search" placeholder="Buscar shows de tv..." />
+    <div class="cssload-dots display-none">
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+      <div class="cssload-dot"></div>
+    </div>
+
+    <svg class="display-none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur
+            in="SourceGraphic"
+            result="blur"
+            stdDeviation="12"
+          ></feGaussianBlur>
+          <feColorMatrix
+            in="blur"
+            mode="matrix"
+            values="1 0 0 0 0	0 1 0 0 0	0 0 1 0 0	0 0 0 18 -7"
+            result="goo"
+          ></feColorMatrix>
+          <!--<feBlend in2="goo" in="SourceGraphic" result="mix" ></feBlend>-->
+        </filter>
+      </defs>
+    </svg>
+    <section id="shows" class="grid-fluid"></section>
+    <template id="show-template">
+      <article class="show">
+        <h3></h3>
+        <div></div>
+        <p>leer mas ...</p>
+        <img />
+        <a></a>
+      </article>
+    </template>
+    <script src="js/app.js"></script>
+  </body>
+</html>
