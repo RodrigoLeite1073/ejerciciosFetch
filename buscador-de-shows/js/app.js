@@ -21,7 +21,11 @@ d.addEventListener("keypress", async (e) => {
       } else {
         json.forEach((el) => {
           $template.querySelector("h3").textContent = el.show.name;
-          $template.querySelector("div").innerHTML = el.show.summary;
+          $template.querySelector("div").innerHTML =
+            el.show.summary || `<h3>No hay descripcion.</h3>`;
+          $template.querySelector("img").src = el.show.image
+            ? el.show.image.medium
+            : "../assets/no-images.png";
 
           let $clone = d.importNode($template, true);
           $fragment.appendChild($clone);
