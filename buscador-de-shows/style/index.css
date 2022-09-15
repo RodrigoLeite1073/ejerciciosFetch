@@ -46,6 +46,12 @@ p {
   justify-content: space-between;
   margin: 5px;
 }
+
+.show h3 {
+  margin: 0 auto;
+  color: var(--title-color);
+}
+
 .show div {
   padding: 5px;
   height: 20vh;

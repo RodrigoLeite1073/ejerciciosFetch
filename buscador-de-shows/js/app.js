@@ -26,6 +26,14 @@ d.addEventListener("keypress", async (e) => {
           $template.querySelector("img").src = el.show.image
             ? el.show.image.medium
             : "../assets/no-images.png";
+          $template.querySelector("img").alt = el.show.name;
+          $template.querySelector("a").href = el.show.url || "#";
+          $template.querySelector("a").target = el.show.url
+            ? "_blanck"
+            : "_self";
+          $template.querySelector("a").textContent = el.show.url
+            ? "Ver mas..."
+            : "";
 
           let $clone = d.importNode($template, true);
           $fragment.appendChild($clone);
