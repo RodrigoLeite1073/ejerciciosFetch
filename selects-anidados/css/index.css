@@ -9,9 +9,37 @@ body {
   background-color: var(--dark-color);
 }
 
-h1 {
+h1,
+h2 {
   font-size: 2rem;
   color: var(--primary-color);
   margin: 1rem;
   text-align: center;
+}
+h2 {
+  font-size: 1rem;
+}
+
+.selects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+select {
+  color: var(--secundary-color);
+  /*background-color: var(--dark-color);*/
+  padding: 0.3rem;
+  border: thin solid var(--secundary-color);
+  margin: 0.5rem;
+}
+
+label {
+  color: var(--secundary-color);
+}
+
+:disabled {
+  color: var(--negro);
+  border: thin solid var(--negro);
 }
