@@ -6,8 +6,11 @@ const apiToken =
   $country = d.getElementById("select-country"),
   $state = d.getElementById("select-state"),
   $city = d.getElementById("select-city"),
-  $errorMessage = d.querySelector(".error-message");
+  $errorMessage = d.querySelector(".error-message"),
+  $flag = d.getElementById("flag");
+
 let token;
+
 const getAuthToken = async () => {
   let authToken;
   try {
@@ -31,7 +34,7 @@ const getAuthToken = async () => {
   } catch (err) {
     console.error(err);
     let message = `${err.statusText}` || "Error de autorizacion";
-    $errorMessage.textContent = `Error ${err.status}:${message}`;
+    $errorMessage.innerHTML = `Error ${err.status}:${message}`;
   }
 };
 
@@ -59,8 +62,8 @@ const getContries = async () => {
     $country.innerHTML = $options;
   } catch (err) {
     console.error(err);
-    let message = `${err.statusText}` || "Error al cargar los paises";
-    $errorMessage.textContent = `Error ${err.status}:${message}`;
+    let message = `${err.statusText}` || "Country Error al cargar los paises";
+    $errorMessage.innerHTML = `Error ${err.status}:${message}`;
   }
 };
 
@@ -84,12 +87,11 @@ const getStates = async (country) => {
     .catch((err) => {
       console.error(err);
       let message = `${err.statusText}` || "Error al cargar los estados";
-      $errorMessage.textContent = `Error ${err.status}:${message}`;
+      $errorMessage.innerHTML = `State Error ${err.status}:${message}`;
     });
 };
 
 const getCities = async (state) => {
-  console.log(state);
   fetch(`${api}cities/${state}`, {
     headers: {
       Authorization: "Bearer " + token,
@@ -109,14 +111,26 @@ const getCities = async (state) => {
     .catch((err) => {
       console.error(err);
       let message = `${err.statusText}` || "Error al cargar los estados";
-      $errorMessage.textContent = `Error ${err.status}:${message}`;
+      $errorMessage.innerHTML = `City Error ${err.status}:${message}`;
     });
+};
+
+const getFlag = (country) => {
+  $flag.src = `https://countryflagsapi.com/svg/${country}`;
+};
+
+const resetSelect = () => {
+  $city.setAttribute("disabled", "");
+  $city.innerHTML = `<option value="">Select a city</option>`;
 };
 
 d.addEventListener("DOMContentLoaded", getContries);
 d.addEventListener("change", (e) => {
   if (e.target === $country) {
+    $errorMessage.innerHTML = "";
+    resetSelect();
     getStates($country.value);
+    getFlag($country.value);
   } else if (e.target === $state) {
     getCities($state.value);
   }

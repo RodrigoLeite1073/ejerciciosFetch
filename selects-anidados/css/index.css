@@ -43,3 +43,8 @@ label {
   color: var(--negro);
   border: thin solid var(--negro);
 }
+
+#flag {
+  width: 30vw;
+  margin: 0 auto;
+}
